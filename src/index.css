@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Urbanist", "Helvetica Neue", Arial, sans-serif;
+  --color-avin-brown: #C2A382;
+  --color-avin-black: #1A1A1A;
+  --color-avin-dark: #141414;
+}
+
+@layer base {
+  body {
+    @apply bg-avin-black text-white font-sans;
+  }
+}
+
+@layer components {
+  .industrial-border {
+    @apply border border-avin-brown/30;
+  }
+  
+  .btn-primary {
+    @apply bg-avin-brown text-avin-black font-bold uppercase tracking-wider transition-opacity hover:opacity-90;
+  }
+}
