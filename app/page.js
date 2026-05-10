@@ -88,7 +88,7 @@ export default function CustomerHome() {
               // The applicationServerKey should match the public VAPID key
               const subscription = await registration.pushManager.subscribe({
                 userVisibleOnly: true,
-                applicationServerKey: 'BM_wA7l123' // Fallback for dev
+                applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
               });
               await fetch('/api/push/subscribe', {
                 method: 'POST',
