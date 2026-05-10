@@ -5,14 +5,15 @@ import Cart from '@/components/customer/Cart';
 import UndoToast from '@/components/customer/UndoToast';
 import OrderStatus from '@/components/customer/OrderStatus';
 
+import { TEXT } from '@/lib/constants';
+
 export default function CustomerHome() {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [activeOrder, setActiveOrder] = useState(null);
   const [showUndo, setShowUndo] = useState(false);
 
-  // Simple polling for order updates instead of SSE on customer side
-  // (SSE is mostly for staff, but can be used here too if needed, though polling is fine for this scope)
+  // Simple polling for order updates
   useEffect(() => {
     let interval;
     if (activeOrder && activeOrder.status !== 'cancelled' && activeOrder.status !== 'completed') {
@@ -56,19 +57,14 @@ export default function CustomerHome() {
     }));
   };
 
-  const handleCheckout = async () => {
-    if (cartItems.length === 0) return;
-    
-    const total = cartItems.reduce((acc, item) => acc + item.price * item.qty, 0);
-    
+  const handleCheckout = async (checkoutData) => {
     try {
       const res = await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          customerName: 'Guest ' + Math.floor(Math.random() * 1000),
-          items: cartItems,
-          total
+          customerName: 'Πελάτης ' + Math.floor(Math.random() * 100),
+          ...checkoutData
         })
       });
       
@@ -85,7 +81,6 @@ export default function CustomerHome() {
             const registration = await navigator.serviceWorker.register('/sw.js');
             const permission = await Notification.requestPermission();
             if (permission === 'granted') {
-              // The applicationServerKey should match the public VAPID key
               const subscription = await registration.pushManager.subscribe({
                 userVisibleOnly: true,
                 applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
@@ -142,14 +137,36 @@ export default function CustomerHome() {
   };
 
   return (
-    <main className="container" style={{ padding: '2rem 1.5rem' }}>
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
+    <main className="container" style={{ padding: '4rem 1.5rem' }}>
+      <header style={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        marginBottom: '5rem',
+        background: 'var(--secondary)',
+        padding: '2.5rem 3.5rem',
+        borderRadius: '3rem',
+        color: 'white',
+        boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)'
+      }}>
         <div>
-          <h1 style={{ color: 'var(--primary)', fontSize: '2.5rem' }}>AVIN Solomos</h1>
-          <p style={{ color: 'var(--secondary)' }}>Select your coffee and enjoy</p>
+          <h1 style={{ fontSize: '2.5rem', fontWeight: '900', letterSpacing: '-0.02em' }}>AVIN <span style={{ color: 'var(--primary)' }}>SOLOMOS</span></h1>
+          <p style={{ opacity: 0.6, fontWeight: '700', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.2em', marginTop: '0.5rem' }}>
+            {TEXT.businessName}
+          </p>
         </div>
-        <button className="btn-primary" onClick={() => setIsCartOpen(true)}>
-          Cart ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
+        <button 
+          className="btn-primary" 
+          onClick={() => setIsCartOpen(true)}
+          style={{ 
+            padding: '1rem 2rem', 
+            borderRadius: '1.5rem', 
+            fontSize: '0.9rem', 
+            fontWeight: '900',
+            boxShadow: '0 10px 15px -3px rgba(194, 163, 130, 0.3)'
+          }}
+        >
+          ΚΑΛΑΘΙ ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
         </button>
       </header>
 
@@ -174,6 +191,11 @@ export default function CustomerHome() {
           onTimeout={handleUndoTimeout} 
         />
       )}
+
+      <footer style={{ marginTop: '8rem', borderTop: '1px solid var(--border)', paddingTop: '4rem', paddingBottom: '4rem', textAlign: 'center' }}>
+        <p style={{ fontWeight: '900', fontSize: '1.2rem', marginBottom: '1rem' }}>{TEXT.businessName}</p>
+        <p style={{ opacity: 0.5, fontSize: '0.9rem' }}>{TEXT.location} | {TEXT.phone}</p>
+      </footer>
     </main>
   );
 }

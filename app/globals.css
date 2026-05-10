@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --background: #fafafa;
-  --foreground: #0f172a;
+  --background: #f8f8f8;
+  --foreground: #1A1A1A;
   
-  --primary: #f97316; /* Vibrant Orange for coffee */
-  --primary-hover: #ea580c;
-  --primary-light: #ffedd5;
+  --primary: #C2A382; /* Coffee Brown */
+  --primary-hover: #b19371;
+  --primary-light: #f4efea;
   
-  --secondary: #334155;
-  --accent: #0ea5e9;
+  --secondary: #1A1A1A; /* Matte Black */
+  --accent: #C2A382;
   
   --surface: #ffffff;
-  --surface-hover: #f8fafc;
+  --surface-hover: #fcfcfc;
   
-  --border: #e2e8f0;
+  --border: #e8e8e8;
   
   --success: #10b981;
   --warning: #f59e0b;
@@ -36,17 +36,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f172a;
-    --foreground: #f8fafc;
+    --background: #1A1A1A;
+    --foreground: #f8f8f8;
     
-    --primary: #f97316;
-    --primary-hover: #fb923c;
-    --primary-light: #431407;
+    --primary: #C2A382;
+    --primary-hover: #d3b493;
+    --primary-light: #2a241d;
     
-    --surface: #1e293b;
-    --surface-hover: #334155;
+    --surface: #242424;
+    --surface-hover: #2a2a2a;
     
-    --border: #334155;
+    --border: #333333;
   }
 }
 
