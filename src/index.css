@@ -4,8 +4,10 @@
 @theme {
   --font-sans: "Urbanist", "Helvetica Neue", Arial, sans-serif;
   --color-avin-brown: #C2A382;
+  --color-coffee-dark: #2D241E;
   --color-avin-black: #1A1A1A;
   --color-avin-dark: #141414;
+  --color-paper: #E8E8E8;
 }
 
 @layer base {
@@ -15,6 +17,11 @@
 }
 
 @layer components {
+  .paper-texture {
+    background-color: var(--color-paper);
+    background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+  }
+  
   .industrial-border {
     @apply border border-avin-brown/30;
   }
