@@ -56,34 +56,39 @@ export default function App() {
       {/* Hero Container with Header */}
       <section className="relative min-h-screen paper-texture text-avin-black overflow-hidden flex flex-col">
         {/* Navigation - Light Mode for Header strictly matching image */}
-        <header className="relative z-30 h-20 flex items-center justify-between px-8 md:px-16">
-          <div className="text-xl font-bold tracking-widest opacity-60">LOGO</div>
+        <header className="relative z-30 h-24 md:h-28 flex items-center justify-between px-8 md:px-16">
+          <div className="flex items-center gap-4">
+            <img src="/logo.png" alt="XYLOURIS Logo" className="h-12 w-auto object-contain md:h-15" />
+            <div className="border-2 border-avin-brown text-avin-brown font-black px-3 py-0.5 md:py-1 rounded-md text-xs md:text-sm tracking-wider shadow-sm flex items-center justify-center translate-y-[10px]">
+              AVIN
+            </div>
+          </div>
           <nav className="flex items-center gap-6 md:gap-10">
             <motion.button 
               whileHover={{ scale: 1.1, color: "#C2A382", opacity: 1 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="text-xs font-bold tracking-widest opacity-60 focus:outline-none"
+              className="text-sm font-extrabold tracking-widest opacity-70 focus:outline-none"
             >
               Home
             </motion.button>
             <motion.button 
               whileHover={{ scale: 1.1, color: "#C2A382", opacity: 1 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="text-xs font-bold tracking-widest opacity-60 focus:outline-none"
+              className="text-sm font-extrabold tracking-widest opacity-70 focus:outline-none"
             >
               Menu
             </motion.button>
             <motion.button 
               whileHover={{ scale: 1.1, color: "#C2A382", opacity: 1 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="text-xs font-bold tracking-widest opacity-60 focus:outline-none"
+              className="text-sm font-extrabold tracking-widest opacity-70 focus:outline-none"
             >
               Deals
             </motion.button>
             <motion.button 
               whileHover={{ scale: 1.1, color: "#C2A382", opacity: 1 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="text-xs font-bold tracking-widest opacity-60 focus:outline-none"
+              className="text-sm font-extrabold tracking-widest opacity-70 focus:outline-none"
             >
               Favourite
             </motion.button>
@@ -92,7 +97,7 @@ export default function App() {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="cursor-pointer"
             >
-              <ShoppingCart size={18} className="opacity-60 hover:opacity-100 transition-opacity" />
+              <ShoppingCart size={18} className="opacity-70 hover:opacity-100 transition-opacity" />
             </motion.div>
           </nav>
         </header>
@@ -117,7 +122,7 @@ export default function App() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-3xl md:text-[44px] font-medium tracking-tight leading-[1.1] mb-0 uppercase">
-                IT' A BREAK<br />
+                IT'S A BREAK<br />
                 WITH <span className="font-black text-avin-black">COFFEE</span>
               </h2>
               
@@ -158,7 +163,7 @@ export default function App() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
-              src="/Gemini_Generated_Image_hh8aekhh8aekhh8a.png"
+              src="/hscf.png"
               alt="XYLOURIS Premium Coffee Experience"
               className="relative z-30 w-full max-w-[600px] h-auto drop-shadow-[0_40px_80px_rgba(0,0,0,0.3)]"
               referrerPolicy="no-referrer"
@@ -211,13 +216,20 @@ export default function App() {
       </AnimatePresence>
 
       {/* Services Section */}
-      <section id="services-section" className="bg-white text-avin-black py-24 w-full">
-        <div className="max-w-7xl mx-auto px-4 md:px-12">
+      <section 
+        id="services-section" 
+        className="relative py-24 w-full text-white bg-cover bg-center bg-no-repeat overflow-hidden"
+        style={{ backgroundImage: "url('/wall.png')" }}
+      >
+        {/* Subtle dark overlay for premium depth and maximum text readability */}
+        <div className="absolute inset-0 bg-black/55 pointer-events-none" />
+        
+        <div className="relative max-w-7xl mx-auto px-4 md:px-12 z-10">
           <motion.h2 
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
             className="text-avin-brown text-xs uppercase tracking-[0.4em] font-black mb-16 text-center"
           >
             Οι Υπηρεσίες μας
@@ -247,17 +259,21 @@ export default function App() {
             ].map((service, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: idx * 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="p-10 paper-texture flex flex-col items-center text-center group hover:scale-[1.02] transition-all duration-500 shadow-sm border border-black/5"
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.25, 1, 0.5, 1] }}
+                whileHover={{ y: -8 }}
+                className="p-10 bg-avin-dark/95 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer border border-white/10 rounded-sm shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-avin-brown/30"
               >
+                {/* Stunning Top Border Accent Line that reveals on hover */}
+                <div className="absolute top-0 left-0 w-full h-[3px] bg-avin-brown scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+
                 <div className="text-avin-brown mb-6 group-hover:scale-110 transition-transform duration-500">
                   {service.icon}
                 </div>
-                <h3 className="text-lg font-bold tracking-widest uppercase mb-4 text-avin-black">{service.title}</h3>
-                <p className="text-avin-black/60 text-sm font-light leading-relaxed">
+                <h3 className="text-lg font-bold tracking-widest uppercase mb-4 text-white">{service.title}</h3>
+                <p className="text-white/70 text-sm font-light leading-relaxed group-hover:text-white transition-colors duration-300">
                   {service.desc}
                 </p>
               </motion.div>
@@ -275,7 +291,7 @@ export default function App() {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight"
           >
-            Order Your favorite<br />coffee now.
+            Παραγγείλετε τον αγαπημένο σας<br />καφέ τώρα.
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -284,8 +300,7 @@ export default function App() {
             transition={{ delay: 0.1 }}
             className="text-avin-black/60 text-lg mb-10 max-w-lg leading-relaxed font-medium"
           >
-            Crafted from 100% hand-picked specialty beans, freshly roasted in small batches to preserve 
-            the ultimate aroma and rich flavor in every single cup.
+            Φτιαγμένος από 100% διαλεγμένους στο χέρι premium κόκκους, φρεσκοκαβουρδισμένους σε μικρές παρτίδες για να διατηρείται το απόλυτο άρωμα και η πλούσια γεύση σε κάθε φλιτζάνι.
           </motion.p>
           
           <motion.button
@@ -294,7 +309,7 @@ export default function App() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="bg-[#2D241E] text-white px-12 py-4 font-bold tracking-widest text-xs uppercase hover:bg-black transition-all flex items-center gap-4 rounded-sm"
+            className="bg-[#2D241E] text-white px-8 py-3 font-bold tracking-widest text-xs uppercase hover:bg-black transition-all flex items-center gap-3 rounded-sm"
           >
             GET YOUR PREMIUM BLEND <ArrowRight size={14} />
           </motion.button>
@@ -303,11 +318,11 @@ export default function App() {
         <div className="md:w-1/2 h-[400px] relative flex items-center justify-center">
           {/* Floating coffee bag and beans mockup feel */}
           <motion.img 
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            src="/Gemini_Generated_Image_0m8x8j0m8x8j0m8x.png"
+            src="/Gemini_Generated_Image_rmfetzrmfetzrmfe-Photoroom.png"
             className="w-full max-w-[500px] z-10 drop-shadow-2xl"
             referrerPolicy="no-referrer"
           />
@@ -321,8 +336,7 @@ export default function App() {
           <div className="space-y-8">
             <h2 className="text-3xl font-black tracking-tighter text-white">XYLOURIS</h2>
             <p className="text-sm font-light leading-relaxed max-w-xs opacity-60">
-              Experience the pinnacle of coffee craftsmanship. From bean to cup, we maintain the highest quality standards 
-              to ensure every sip is an awakening of the senses.
+              Ζήστε την απόλυτη εμπειρία της τέχνης του καφέ. Από τον κόκκο έως το φλιτζάνι, διατηρούμε τα υψηλότερα πρότυπα ποιότητας για να διασφαλίσουμε ότι κάθε γουλιά ξυπνά τις αισθήσεις σας.
             </p>
           </div>
 
