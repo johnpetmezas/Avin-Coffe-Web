@@ -30,3 +30,64 @@
     @apply bg-avin-brown text-avin-black font-bold uppercase tracking-wider transition-opacity hover:opacity-90;
   }
 }
+
+/* ---------------------------------------------------- */
+/* ADDITIVE RESPONSIVE BREAKPOINT RULES (<= 768px)       */
+/* Scoped to prevent horizontal overflow and optimize   */
+/* mobile rhythm without altering desktop visuals        */
+/* ---------------------------------------------------- */
+
+@media (max-width: 768px) {
+  /* Neutralize desktop badge translation on mobile for perfect centering */
+  header div.border-2.border-avin-brown {
+    transform: translateY(0px) !important;
+    margin-top: 6px !important;
+  }
+  
+  /* 3. Hero content layout spacing adjustment */
+  #root section:first-of-type > div.flex-grow.flex.flex-col {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    gap: 2rem !important;
+    align-items: center !important;
+  }
+  
+  /* Hero Left Column Text adjustment */
+  #root section:first-of-type div.w-full.md\:w-1\/2.z-20 {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  /* Scaled down staggered margins and font-sizes for "COFFEE" */
+  #root section:first-of-type div.flex.flex-col.mt-1.relative > span {
+    margin-left: 2rem !important;
+    font-size: 2.75rem !important;
+  }
+
+  /* Right column drink container height limit */
+  #root section:first-of-type div.w-full.md\:w-1\/2.relative.h-\[500px\] {
+    height: 320px !important;
+    margin-top: 2rem !important;
+  }
+
+  /* CTA Coffee bag image container height limit */
+  #root section.paper-texture div.md\:w-1\/2.h-\[400px\] {
+    height: 280px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra narrow viewport optimizations (e.g. mobile portrait <= 480px) */
+  #root section:first-of-type div.flex.flex-col.mt-1.relative > span {
+    margin-left: 1rem !important;
+    font-size: 2.25rem !important;
+  }
+  
+  /* Optimize PWA Dialog padding inside modal for narrow mobile screens */
+  div.fixed div.relative.bg-avin-black {
+    padding: 2.5rem 1.5rem !important;
+  }
+}
+

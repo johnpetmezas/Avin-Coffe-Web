@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Phone, MapPin, Coffee, ArrowRight, X, Fuel, ShoppingBag, Sparkles, ShoppingCart } from 'lucide-react';
+import { Phone, MapPin, Coffee, ArrowRight, X, Fuel, ShoppingBag, Sparkles, ShoppingCart, Menu } from 'lucide-react';
 
 // Custom hook for PWA installation logic
 function usePWAInstall() {
@@ -34,6 +34,7 @@ function usePWAInstall() {
 export default function App() {
   const { canInstall, showInstallPrompt } = usePWAInstall();
   const [showModal, setShowModal] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleOrderClick = () => {
     if (canInstall) {
@@ -63,7 +64,8 @@ export default function App() {
               AVIN
             </div>
           </div>
-          <nav className="flex items-center gap-6 md:gap-10">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-6 md:gap-10">
             <motion.button 
               whileHover={{ scale: 1.1, color: "#C2A382", opacity: 1 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -100,7 +102,67 @@ export default function App() {
               <ShoppingCart size={18} className="opacity-70 hover:opacity-100 transition-opacity" />
             </motion.div>
           </nav>
+
+          {/* Mobile Navigation Controls */}
+          <div className="flex md:hidden items-center gap-6 z-50">
+            <motion.div
+              whileTap={{ scale: 0.95 }}
+              className="cursor-pointer text-avin-black"
+            >
+              <ShoppingCart size={18} className="opacity-75" />
+            </motion.div>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="text-avin-black focus:outline-none p-1"
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? <X size={22} className="text-avin-black" /> : <Menu size={22} className="text-avin-black" />}
+            </button>
+          </div>
         </header>
+
+        {/* Mobile Nav Overlay Menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="fixed inset-x-0 top-0 bg-[#E8E8E8] z-40 shadow-xl border-b border-black/10 flex flex-col pt-28 pb-8 px-8 gap-4 md:hidden"
+              style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/p6.png")' }}
+            >
+              <motion.button 
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-avin-black text-left text-sm font-extrabold tracking-widest py-3 border-b border-black/5 uppercase"
+              >
+                Home
+              </motion.button>
+              <motion.button 
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-avin-black text-left text-sm font-extrabold tracking-widest py-3 border-b border-black/5 uppercase"
+              >
+                Menu
+              </motion.button>
+              <motion.button 
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-avin-black text-left text-sm font-extrabold tracking-widest py-3 border-b border-black/5 uppercase"
+              >
+                Deals
+              </motion.button>
+              <motion.button 
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-avin-black text-left text-sm font-extrabold tracking-widest py-3 uppercase"
+              >
+                Favourite
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Hero Content */}
         <div className="flex-grow flex flex-col md:flex-row items-center px-8 md:px-24 py-12 relative">
@@ -134,7 +196,7 @@ export default function App() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + i * 0.1 }}
-                    className={`text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.85] ml-16 md:ml-32 ${
+                    className={`text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.85] ml-8 sm:ml-16 md:ml-32 ${
                       i < 2 ? 'text-avin-black' : 'text-avin-black/10'
                     }`}
                   >
@@ -157,7 +219,7 @@ export default function App() {
           </div>
 
           {/* Right Column: Creative Drink Display */}
-          <div className="w-full md:w-1/2 relative h-[500px] mt-12 md:mt-0 flex items-center justify-center z-20">
+          <div className="w-full md:w-1/2 relative h-[320px] md:h-[500px] mt-12 md:mt-0 flex items-center justify-center z-20">
             {/* The Drink with Composite Background */}
             <motion.img 
               initial={{ scale: 0.9, opacity: 0 }}
@@ -165,7 +227,7 @@ export default function App() {
               transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
               src="/hscf.png"
               alt="XYLOURIS Premium Coffee Experience"
-              className="relative z-30 w-full max-w-[600px] h-auto drop-shadow-[0_40px_80px_rgba(0,0,0,0.3)]"
+              className="relative z-30 w-full max-w-[600px] max-h-[300px] md:max-h-none object-contain h-auto drop-shadow-[0_40px_80px_rgba(0,0,0,0.3)]"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -315,7 +377,7 @@ export default function App() {
           </motion.button>
         </div>
 
-        <div className="md:w-1/2 h-[400px] relative flex items-center justify-center">
+        <div className="md:w-1/2 h-[280px] md:h-[400px] relative flex items-center justify-center">
           {/* Floating coffee bag and beans mockup feel */}
           <motion.img 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -323,7 +385,7 @@ export default function App() {
             viewport={{ once: true }}
             transition={{ duration: 1 }}
             src="/Gemini_Generated_Image_rmfetzrmfetzrmfe-Photoroom.png"
-            className="w-full max-w-[500px] z-10 drop-shadow-2xl"
+            className="w-full max-w-[500px] max-h-[260px] md:max-h-none object-contain z-10 drop-shadow-2xl"
             referrerPolicy="no-referrer"
           />
         </div>
