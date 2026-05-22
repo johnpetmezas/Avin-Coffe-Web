@@ -67,9 +67,10 @@
   }
 
   /* Right column drink container height limit */
+  #root section:first-of-type div.w-full.md\:w-1\/2.relative.h-\[260px\],
   #root section:first-of-type div.w-full.md\:w-1\/2.relative.h-\[500px\] {
-    height: 320px !important;
-    margin-top: 2rem !important;
+    height: 260px !important;
+    margin-top: 1rem !important;
   }
 
   /* CTA Coffee bag image container height limit */

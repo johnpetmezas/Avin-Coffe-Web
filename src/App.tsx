@@ -55,7 +55,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-avin-black text-white font-sans selection:bg-avin-brown selection:text-white overflow-x-hidden">
       {/* Hero Container with Header */}
-      <section className="relative min-h-screen paper-texture text-avin-black overflow-hidden flex flex-col">
+      <section className="relative min-h-0 md:min-h-screen pb-12 md:pb-0 paper-texture text-avin-black overflow-hidden flex flex-col">
         {/* Navigation - Light Mode for Header strictly matching image */}
         <header className="relative z-30 h-24 md:h-28 flex items-center justify-between px-8 md:px-16">
           <div className="flex items-center gap-4">
@@ -165,12 +165,12 @@ export default function App() {
         </AnimatePresence>
 
         {/* Hero Content */}
-        <div className="flex-grow flex flex-col md:flex-row items-center px-8 md:px-24 py-12 relative">
+        <div className="flex-grow flex flex-col md:flex-row items-center px-8 md:px-24 py-6 md:py-12 relative">
           {/* Abstract background circles */}
           <div className="absolute top-0 left-0 -translate-x-1/4 -translate-y-1/4">
              {[...Array(5)].map((_, i) => (
-               <div key={i} className="absolute border border-black/5 rounded-full" 
-                    style={{ width: `${(i + 1) * 200}px`, height: `${(i + 1) * 200}px`, top: '0', left: '0' }} />
+                <div key={i} className="absolute border border-black/5 rounded-full" 
+                     style={{ width: `${(i + 1) * 200}px`, height: `${(i + 1) * 200}px`, top: '0', left: '0' }} />
              ))}
           </div>
 
@@ -211,7 +211,7 @@ export default function App() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 }}
-                className="mt-[60px] mb-0 mx-0 py-4 px-[49px] bg-[#2D241E] text-white font-bold tracking-widest text-xs uppercase hover:bg-black transition-all flex items-center gap-3 w-max rounded-sm shadow-lg shadow-black/10"
+                className="mt-6 md:mt-[60px] mb-0 mx-0 py-4 px-[49px] bg-[#2D241E] text-white font-bold tracking-widest text-xs uppercase hover:bg-black transition-all flex items-center gap-3 w-max rounded-sm shadow-lg shadow-black/10"
               >
                 Order Now <ArrowRight size={14} />
               </motion.button>
@@ -219,7 +219,7 @@ export default function App() {
           </div>
 
           {/* Right Column: Creative Drink Display */}
-          <div className="w-full md:w-1/2 relative h-[320px] md:h-[500px] mt-12 md:mt-0 flex items-center justify-center z-20">
+          <div className="w-full md:w-1/2 relative h-[260px] md:h-[500px] mt-6 md:mt-0 flex items-center justify-center z-20">
             {/* The Drink with Composite Background */}
             <motion.img 
               initial={{ scale: 0.9, opacity: 0 }}
@@ -227,7 +227,7 @@ export default function App() {
               transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
               src="/hscf.png"
               alt="XYLOURIS Premium Coffee Experience"
-              className="relative z-30 w-full max-w-[600px] max-h-[300px] md:max-h-none object-contain h-auto drop-shadow-[0_40px_80px_rgba(0,0,0,0.3)]"
+              className="relative z-30 w-full max-w-[600px] max-h-[240px] md:max-h-none object-contain h-auto drop-shadow-[0_40px_80px_rgba(0,0,0,0.3)]"
               referrerPolicy="no-referrer"
             />
           </div>
