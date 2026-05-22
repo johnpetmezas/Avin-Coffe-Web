@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Phone, MapPin, Coffee, ArrowRight, X, Fuel, ShoppingBag, Sparkles, ShoppingCart, Menu } from 'lucide-react';
+import { Phone, MapPin, Coffee, ArrowRight, X, Fuel, ShoppingBag, Sparkles, ShoppingCart, Menu, Mail } from 'lucide-react';
 
 // Custom hook for PWA installation logic
 function usePWAInstall() {
@@ -35,6 +35,16 @@ export default function App() {
   const { canInstall, showInstallPrompt } = usePWAInstall();
   const [showModal, setShowModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [mobileMenuOpen]);
 
   const handleOrderClick = () => {
     if (canInstall) {
@@ -132,6 +142,15 @@ export default function App() {
               className="fixed inset-x-0 top-0 bg-[#E8E8E8] z-40 shadow-xl border-b border-black/10 flex flex-col pt-28 pb-8 px-8 gap-4 md:hidden"
               style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/p6.png")' }}
             >
+              {/* Top-Right "X" Close Button */}
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="absolute top-8 right-8 text-avin-black hover:text-avin-brown focus:outline-none p-1"
+                aria-label="Close Menu"
+              >
+                <X size={22} className="text-avin-black" />
+              </button>
+
               <motion.button 
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setMobileMenuOpen(false)}
@@ -393,9 +412,9 @@ export default function App() {
 
       {/* Main Footer - Professional 4-Column Layout */}
       <footer className="bg-[#1A1614] py-24 px-8 md:px-24 text-white/80">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+        <div className="max-w-7xl mx-auto grid grid-cols-3 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 md:gap-16">
           {/* Brand Info */}
-          <div className="space-y-8">
+          <div className="col-span-3 md:col-span-1 space-y-8">
             <h2 className="text-3xl font-black tracking-tighter text-white">XYLOURIS</h2>
             <p className="text-sm font-light leading-relaxed max-w-xs opacity-60">
               Ζήστε την απόλυτη εμπειρία της τέχνης του καφέ. Από τον κόκκο έως το φλιτζάνι, διατηρούμε τα υψηλότερα πρότυπα ποιότητας για να διασφαλίσουμε ότι κάθε γουλιά ξυπνά τις αισθήσεις σας.
@@ -403,7 +422,7 @@ export default function App() {
           </div>
 
           {/* Page Links */}
-          <div className="space-y-8">
+          <div className="col-span-1 space-y-8">
             <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-white">Page</h4>
             <div className="flex flex-col gap-4 text-sm font-medium opacity-60">
               <a href="#" className="hover:text-avin-brown transition-colors">Home</a>
@@ -414,7 +433,7 @@ export default function App() {
           </div>
 
           {/* Social Links */}
-          <div className="space-y-8">
+          <div className="col-span-1 space-y-8">
             <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-white">Links</h4>
             <div className="flex flex-col gap-4 text-sm font-medium opacity-60">
               <a href="#" className="hover:text-avin-brown transition-colors">Facebook</a>
@@ -424,20 +443,20 @@ export default function App() {
           </div>
 
           {/* Contacts */}
-          <div className="space-y-8">
+          <div className="col-span-1 space-y-8">
             <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-white">Contacts</h4>
             <div className="flex flex-col gap-6 text-sm font-medium opacity-60">
-              <div className="flex items-start gap-4">
+              <div className="flex flex-col md:flex-row items-start gap-1 md:gap-4">
                 <MapPin size={18} className="text-avin-brown shrink-0" />
-                <span>Σολομός, Κορινθίας</span>
+                <span className="text-xs md:text-sm font-light">Σολομός, Κορινθίας</span>
               </div>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-4">
                 <Phone size={18} className="text-avin-brown shrink-0" />
-                <a href="tel:2741031370" className="hover:text-white">27410 31370</a>
+                <a href="tel:2741031370" className="hover:text-white text-xs md:text-sm">27410 31370</a>
               </div>
-              <div className="flex items-center gap-4">
-                <X size={18} className="text-avin-brown shrink-0" />
-                <a href="mailto:info@xylouris.gr" className="hover:text-white">info@xylouris.gr</a>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-4">
+                <Mail size={18} className="text-avin-brown shrink-0" />
+                <a href="mailto:info@xylouris.gr" className="hover:text-white text-xs md:text-sm break-all">info@xylouris.gr</a>
               </div>
             </div>
           </div>
