@@ -230,19 +230,19 @@ export default function App() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 }}
-                className="relative overflow-hidden bg-white text-black border-none cursor-pointer rounded-full w-56 h-12 md:w-64 md:h-14 shadow-lg shadow-black/10 hover:scale-105 active:scale-98 transition-transform duration-300 flex items-center justify-center mt-6 md:mt-[60px] select-none"
+                className="relative overflow-hidden bg-[#2D241E] text-white border-none cursor-pointer rounded-sm w-56 h-12 md:w-64 md:h-14 shadow-lg shadow-black/10 hover:bg-black transition-all duration-300 flex items-center justify-center mt-6 md:mt-[60px] select-none"
               >
                 <div className="absolute inset-0 flex items-center overflow-hidden">
                   <div className="absolute flex whitespace-nowrap animate-marquee-track">
                     {/* First half */}
                     <div className="flex shrink-0 items-center justify-around min-w-full">
-                      <span className="text-xs font-black tracking-[0.2em] mx-4 uppercase">GET IN TOUCH</span>
-                      <span className="text-xs font-black tracking-[0.2em] mx-4 uppercase">GET IN TOUCH</span>
+                      <span className="text-xs font-bold tracking-widest mx-6 uppercase flex items-center gap-2">Order Now <ArrowRight size={12} /></span>
+                      <span className="text-xs font-bold tracking-widest mx-6 uppercase flex items-center gap-2">Order Now <ArrowRight size={12} /></span>
                     </div>
-                    {/* Second half (identical) */}
+                    {/* Second half (identical clone for seamless loop) */}
                     <div className="flex shrink-0 items-center justify-around min-w-full">
-                      <span className="text-xs font-black tracking-[0.2em] mx-4 uppercase">GET IN TOUCH</span>
-                      <span className="text-xs font-black tracking-[0.2em] mx-4 uppercase">GET IN TOUCH</span>
+                      <span className="text-xs font-bold tracking-widest mx-6 uppercase flex items-center gap-2">Order Now <ArrowRight size={12} /></span>
+                      <span className="text-xs font-bold tracking-widest mx-6 uppercase flex items-center gap-2">Order Now <ArrowRight size={12} /></span>
                     </div>
                   </div>
                 </div>
@@ -403,19 +403,19 @@ export default function App() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="relative overflow-hidden bg-white text-black border-none cursor-pointer rounded-full w-56 h-12 md:w-64 md:h-14 shadow-lg shadow-black/10 hover:scale-105 active:scale-98 transition-transform duration-300 flex items-center justify-center select-none"
+            className="relative overflow-hidden bg-[#2D241E] text-white border-none cursor-pointer rounded-sm w-72 h-12 md:w-80 md:h-14 shadow-lg shadow-black/10 hover:bg-black transition-all duration-300 flex items-center justify-center select-none"
           >
             <div className="absolute inset-0 flex items-center overflow-hidden">
               <div className="absolute flex whitespace-nowrap animate-marquee-track">
                 {/* First half */}
                 <div className="flex shrink-0 items-center justify-around min-w-full">
-                  <span className="text-xs font-black tracking-[0.2em] mx-4 uppercase">GET IN TOUCH</span>
-                  <span className="text-xs font-black tracking-[0.2em] mx-4 uppercase">GET IN TOUCH</span>
+                  <span className="text-xs font-bold tracking-widest mx-6 uppercase flex items-center gap-2">Get Your Premium Blend <ArrowRight size={12} /></span>
+                  <span className="text-xs font-bold tracking-widest mx-6 uppercase flex items-center gap-2">Get Your Premium Blend <ArrowRight size={12} /></span>
                 </div>
-                {/* Second half (identical) */}
+                {/* Second half (identical clone for seamless loop) */}
                 <div className="flex shrink-0 items-center justify-around min-w-full">
-                  <span className="text-xs font-black tracking-[0.2em] mx-4 uppercase">GET IN TOUCH</span>
-                  <span className="text-xs font-black tracking-[0.2em] mx-4 uppercase">GET IN TOUCH</span>
+                  <span className="text-xs font-bold tracking-widest mx-6 uppercase flex items-center gap-2">Get Your Premium Blend <ArrowRight size={12} /></span>
+                  <span className="text-xs font-bold tracking-widest mx-6 uppercase flex items-center gap-2">Get Your Premium Blend <ArrowRight size={12} /></span>
                 </div>
               </div>
             </div>
