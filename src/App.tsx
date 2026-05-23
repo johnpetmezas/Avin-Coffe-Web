@@ -232,8 +232,8 @@ export default function App() {
                 transition={{ delay: 1.2 }}
                 className="relative overflow-hidden bg-[#2D241E] text-white border-none cursor-pointer rounded-full w-56 h-12 md:w-64 md:h-14 shadow-lg shadow-black/10 hover:bg-black transition-all duration-300 flex items-center justify-center mt-6 md:mt-[60px] select-none"
               >
-                <div className="absolute inset-0 flex items-center overflow-hidden">
-                  <div className="absolute flex whitespace-nowrap animate-marquee-track">
+                <div className="absolute inset-0 overflow-hidden rounded-full">
+                  <div className="absolute left-0 top-0 bottom-0 flex items-center whitespace-nowrap animate-marquee-track">
                     {/* First half */}
                     <div className="flex shrink-0 items-center gap-8 pr-8">
                       {Array(8).fill(null).map((_, idx) => (
@@ -411,8 +411,8 @@ export default function App() {
             transition={{ delay: 0.2 }}
             className="relative overflow-hidden bg-[#2D241E] text-white border-none cursor-pointer rounded-full w-72 h-12 md:w-80 md:h-14 shadow-lg shadow-black/10 hover:bg-black transition-all duration-300 flex items-center justify-center select-none"
           >
-            <div className="absolute inset-0 flex items-center overflow-hidden">
-              <div className="absolute flex whitespace-nowrap animate-marquee-track">
+            <div className="absolute inset-0 overflow-hidden rounded-full">
+              <div className="absolute left-0 top-0 bottom-0 flex items-center whitespace-nowrap animate-marquee-track">
                 {/* First half */}
                 <div className="flex shrink-0 items-center gap-8 pr-8">
                   {Array(6).fill(null).map((_, idx) => (

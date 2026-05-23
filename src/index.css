@@ -95,14 +95,16 @@
 /* Seamless Horizontal Scrolling Pill Button Animation */
 @keyframes marquee-track {
   0% {
-    transform: translateX(0);
+    transform: translate3d(-50%, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .animate-marquee-track {
   animation: marquee-track 12.9s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
