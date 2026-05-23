@@ -35,6 +35,7 @@ export default function App() {
   const { canInstall, showInstallPrompt } = usePWAInstall();
   const [showModal, setShowModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hoveredHeaderIndex, setHoveredHeaderIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,33 +78,105 @@ export default function App() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 md:gap-10">
             <motion.button 
-              whileHover={{ scale: 1.1, color: "#C2A382", opacity: 1 }}
+              onMouseEnter={() => setHoveredHeaderIndex(0)}
+              onMouseLeave={() => setHoveredHeaderIndex(null)}
+              whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="text-sm font-extrabold tracking-widest opacity-70 focus:outline-none"
+              className="relative text-sm font-extrabold tracking-widest focus:outline-none py-2 px-3 flex items-center justify-center select-none"
             >
-              Home
+              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 0 ? 'text-[#C2A382] opacity-100' : 'text-avin-black opacity-70'}`}>
+                Home
+              </span>
+              <AnimatePresence>
+                {hoveredHeaderIndex === 0 && (
+                  <motion.img 
+                    initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
+                    animate={{ opacity: 0.95, scale: 1.6, rotate: -5 }}
+                    exit={{ opacity: 0, scale: 0.5, rotate: 20 }}
+                    transition={{ type: "spring", stiffness: 250, damping: 18 }}
+                    src="/Gemini_Generated_Image_rmfetzrmfetzrmfe-Photoroom.png"
+                    alt="Coffee Splash"
+                    className="absolute pointer-events-none select-none z-0 w-24 h-24 max-w-none object-contain"
+                  />
+                )}
+              </AnimatePresence>
             </motion.button>
+
             <motion.button 
-              whileHover={{ scale: 1.1, color: "#C2A382", opacity: 1 }}
+              onMouseEnter={() => setHoveredHeaderIndex(1)}
+              onMouseLeave={() => setHoveredHeaderIndex(null)}
+              whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="text-sm font-extrabold tracking-widest opacity-70 focus:outline-none"
+              className="relative text-sm font-extrabold tracking-widest focus:outline-none py-2 px-3 flex items-center justify-center select-none"
             >
-              Menu
+              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 1 ? 'text-[#C2A382] opacity-100' : 'text-avin-black opacity-70'}`}>
+                Menu
+              </span>
+              <AnimatePresence>
+                {hoveredHeaderIndex === 1 && (
+                  <motion.img 
+                    initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
+                    animate={{ opacity: 0.95, scale: 1.6, rotate: 5 }}
+                    exit={{ opacity: 0, scale: 0.5, rotate: 20 }}
+                    transition={{ type: "spring", stiffness: 250, damping: 18 }}
+                    src="/Gemini_Generated_Image_rmfetzrmfetzrmfe-Photoroom.png"
+                    alt="Coffee Splash"
+                    className="absolute pointer-events-none select-none z-0 w-24 h-24 max-w-none object-contain"
+                  />
+                )}
+              </AnimatePresence>
             </motion.button>
+
             <motion.button 
-              whileHover={{ scale: 1.1, color: "#C2A382", opacity: 1 }}
+              onMouseEnter={() => setHoveredHeaderIndex(2)}
+              onMouseLeave={() => setHoveredHeaderIndex(null)}
+              whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="text-sm font-extrabold tracking-widest opacity-70 focus:outline-none"
+              className="relative text-sm font-extrabold tracking-widest focus:outline-none py-2 px-3 flex items-center justify-center select-none"
             >
-              Deals
+              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 2 ? 'text-[#C2A382] opacity-100' : 'text-avin-black opacity-70'}`}>
+                Deals
+              </span>
+              <AnimatePresence>
+                {hoveredHeaderIndex === 2 && (
+                  <motion.img 
+                    initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
+                    animate={{ opacity: 0.95, scale: 1.6, rotate: -15 }}
+                    exit={{ opacity: 0, scale: 0.5, rotate: 20 }}
+                    transition={{ type: "spring", stiffness: 250, damping: 18 }}
+                    src="/Gemini_Generated_Image_rmfetzrmfetzrmfe-Photoroom.png"
+                    alt="Coffee Splash"
+                    className="absolute pointer-events-none select-none z-0 w-24 h-24 max-w-none object-contain"
+                  />
+                )}
+              </AnimatePresence>
             </motion.button>
+
             <motion.button 
-              whileHover={{ scale: 1.1, color: "#C2A382", opacity: 1 }}
+              onMouseEnter={() => setHoveredHeaderIndex(3)}
+              onMouseLeave={() => setHoveredHeaderIndex(null)}
+              whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="text-sm font-extrabold tracking-widest opacity-70 focus:outline-none"
+              className="relative text-sm font-extrabold tracking-widest focus:outline-none py-2 px-3 flex items-center justify-center select-none"
             >
-              Favourite
+              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 3 ? 'text-[#C2A382] opacity-100' : 'text-avin-black opacity-70'}`}>
+                Favourite
+              </span>
+              <AnimatePresence>
+                {hoveredHeaderIndex === 3 && (
+                  <motion.img 
+                    initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
+                    animate={{ opacity: 0.95, scale: 1.6, rotate: 10 }}
+                    exit={{ opacity: 0, scale: 0.5, rotate: 20 }}
+                    transition={{ type: "spring", stiffness: 250, damping: 18 }}
+                    src="/Gemini_Generated_Image_rmfetzrmfetzrmfe-Photoroom.png"
+                    alt="Coffee Splash"
+                    className="absolute pointer-events-none select-none z-0 w-24 h-24 max-w-none object-contain"
+                  />
+                )}
+              </AnimatePresence>
             </motion.button>
+
             <motion.div
               whileHover={{ scale: 1.2, rotate: 8, color: "#C2A382" }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
