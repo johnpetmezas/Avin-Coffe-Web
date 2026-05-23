@@ -235,7 +235,7 @@ export default function App() {
                 <div className="absolute inset-0 flex items-center overflow-hidden">
                   <div className="absolute flex whitespace-nowrap animate-marquee-track">
                     {/* First half */}
-                    <div className="flex shrink-0 items-center gap-3 pr-3">
+                    <div className="flex shrink-0 items-center gap-8 pr-8">
                       {Array(8).fill(null).map((_, idx) => (
                         <span key={idx} className="text-xs font-bold tracking-widest uppercase flex items-center gap-2">
                           Order Now <ArrowRight size={12} />
@@ -243,7 +243,7 @@ export default function App() {
                       ))}
                     </div>
                     {/* Second half (identical clone for seamless loop) */}
-                    <div className="flex shrink-0 items-center gap-3 pr-3">
+                    <div className="flex shrink-0 items-center gap-8 pr-8">
                       {Array(8).fill(null).map((_, idx) => (
                         <span key={idx} className="text-xs font-bold tracking-widest uppercase flex items-center gap-2">
                           Order Now <ArrowRight size={12} />
@@ -414,7 +414,7 @@ export default function App() {
             <div className="absolute inset-0 flex items-center overflow-hidden">
               <div className="absolute flex whitespace-nowrap animate-marquee-track">
                 {/* First half */}
-                <div className="flex shrink-0 items-center gap-4 pr-4">
+                <div className="flex shrink-0 items-center gap-8 pr-8">
                   {Array(6).fill(null).map((_, idx) => (
                     <span key={idx} className="text-xs font-bold tracking-widest uppercase flex items-center gap-2">
                       Get Your Premium Blend <ArrowRight size={12} />
@@ -422,7 +422,7 @@ export default function App() {
                   ))}
                 </div>
                 {/* Second half (identical clone for seamless loop) */}
-                <div className="flex shrink-0 items-center gap-4 pr-4">
+                <div className="flex shrink-0 items-center gap-8 pr-8">
                   {Array(6).fill(null).map((_, idx) => (
                     <span key={idx} className="text-xs font-bold tracking-widest uppercase flex items-center gap-2">
                       Get Your Premium Blend <ArrowRight size={12} />
