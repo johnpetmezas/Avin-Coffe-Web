@@ -178,11 +178,29 @@ export default function App() {
             </motion.button>
 
             <motion.div
-              whileHover={{ scale: 1.2, rotate: 8, color: "#C2A382" }}
+              onMouseEnter={() => setHoveredHeaderIndex(4)}
+              onMouseLeave={() => setHoveredHeaderIndex(null)}
+              whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="cursor-pointer"
+              className="relative cursor-pointer w-10 h-10 flex items-center justify-center select-none"
             >
-              <ShoppingCart size={18} className="opacity-70 hover:opacity-100 transition-opacity" />
+              <ShoppingCart 
+                size={18} 
+                className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 4 ? 'text-black opacity-100' : 'text-avin-black opacity-70'}`} 
+              />
+              <AnimatePresence>
+                {hoveredHeaderIndex === 4 && (
+                  <motion.img 
+                    initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
+                    animate={{ opacity: 0.85, scale: 1.15, rotate: -3 }}
+                    exit={{ opacity: 0, scale: 0.8, rotate: 15 }}
+                    transition={{ type: "spring", stiffness: 180, damping: 20 }}
+                    src="/splash.png"
+                    alt="Coffee Splash"
+                    className="absolute pointer-events-none select-none z-0 w-24 h-24 max-w-none object-contain"
+                  />
+                )}
+              </AnimatePresence>
             </motion.div>
           </nav>
 
