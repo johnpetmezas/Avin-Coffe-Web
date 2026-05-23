@@ -80,21 +80,21 @@ export default function App() {
             <motion.button 
               onMouseEnter={() => setHoveredHeaderIndex(0)}
               onMouseLeave={() => setHoveredHeaderIndex(null)}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="relative text-sm font-extrabold tracking-widest focus:outline-none py-2 px-3 flex items-center justify-center select-none"
             >
-              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 0 ? 'text-[#C2A382] opacity-100' : 'text-avin-black opacity-70'}`}>
+              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 0 ? 'text-black opacity-100' : 'text-avin-black opacity-70'}`}>
                 Home
               </span>
               <AnimatePresence>
                 {hoveredHeaderIndex === 0 && (
                   <motion.img 
-                    initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
-                    animate={{ opacity: 0.95, scale: 1.6, rotate: -5 }}
-                    exit={{ opacity: 0, scale: 0.5, rotate: 20 }}
-                    transition={{ type: "spring", stiffness: 250, damping: 18 }}
-                    src="/Gemini_Generated_Image_rmfetzrmfetzrmfe-Photoroom.png"
+                    initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
+                    animate={{ opacity: 0.85, scale: 1.15, rotate: -5 }}
+                    exit={{ opacity: 0, scale: 0.8, rotate: 15 }}
+                    transition={{ type: "spring", stiffness: 180, damping: 20 }}
+                    src="/splash.png"
                     alt="Coffee Splash"
                     className="absolute pointer-events-none select-none z-0 w-24 h-24 max-w-none object-contain"
                   />
@@ -105,21 +105,21 @@ export default function App() {
             <motion.button 
               onMouseEnter={() => setHoveredHeaderIndex(1)}
               onMouseLeave={() => setHoveredHeaderIndex(null)}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="relative text-sm font-extrabold tracking-widest focus:outline-none py-2 px-3 flex items-center justify-center select-none"
             >
-              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 1 ? 'text-[#C2A382] opacity-100' : 'text-avin-black opacity-70'}`}>
+              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 1 ? 'text-black opacity-100' : 'text-avin-black opacity-70'}`}>
                 Menu
               </span>
               <AnimatePresence>
                 {hoveredHeaderIndex === 1 && (
                   <motion.img 
-                    initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
-                    animate={{ opacity: 0.95, scale: 1.6, rotate: 5 }}
-                    exit={{ opacity: 0, scale: 0.5, rotate: 20 }}
-                    transition={{ type: "spring", stiffness: 250, damping: 18 }}
-                    src="/Gemini_Generated_Image_rmfetzrmfetzrmfe-Photoroom.png"
+                    initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
+                    animate={{ opacity: 0.85, scale: 1.15, rotate: 5 }}
+                    exit={{ opacity: 0, scale: 0.8, rotate: 15 }}
+                    transition={{ type: "spring", stiffness: 180, damping: 20 }}
+                    src="/splash.png"
                     alt="Coffee Splash"
                     className="absolute pointer-events-none select-none z-0 w-24 h-24 max-w-none object-contain"
                   />
@@ -130,21 +130,21 @@ export default function App() {
             <motion.button 
               onMouseEnter={() => setHoveredHeaderIndex(2)}
               onMouseLeave={() => setHoveredHeaderIndex(null)}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="relative text-sm font-extrabold tracking-widest focus:outline-none py-2 px-3 flex items-center justify-center select-none"
             >
-              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 2 ? 'text-[#C2A382] opacity-100' : 'text-avin-black opacity-70'}`}>
+              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 2 ? 'text-black opacity-100' : 'text-avin-black opacity-70'}`}>
                 Deals
               </span>
               <AnimatePresence>
                 {hoveredHeaderIndex === 2 && (
                   <motion.img 
-                    initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
-                    animate={{ opacity: 0.95, scale: 1.6, rotate: -15 }}
-                    exit={{ opacity: 0, scale: 0.5, rotate: 20 }}
-                    transition={{ type: "spring", stiffness: 250, damping: 18 }}
-                    src="/Gemini_Generated_Image_rmfetzrmfetzrmfe-Photoroom.png"
+                    initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
+                    animate={{ opacity: 0.85, scale: 1.15, rotate: -12 }}
+                    exit={{ opacity: 0, scale: 0.8, rotate: 15 }}
+                    transition={{ type: "spring", stiffness: 180, damping: 20 }}
+                    src="/splash.png"
                     alt="Coffee Splash"
                     className="absolute pointer-events-none select-none z-0 w-24 h-24 max-w-none object-contain"
                   />
@@ -155,21 +155,21 @@ export default function App() {
             <motion.button 
               onMouseEnter={() => setHoveredHeaderIndex(3)}
               onMouseLeave={() => setHoveredHeaderIndex(null)}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="relative text-sm font-extrabold tracking-widest focus:outline-none py-2 px-3 flex items-center justify-center select-none"
             >
-              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 3 ? 'text-[#C2A382] opacity-100' : 'text-avin-black opacity-70'}`}>
+              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 3 ? 'text-black opacity-100' : 'text-avin-black opacity-70'}`}>
                 Favourite
               </span>
               <AnimatePresence>
                 {hoveredHeaderIndex === 3 && (
                   <motion.img 
-                    initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
-                    animate={{ opacity: 0.95, scale: 1.6, rotate: 10 }}
-                    exit={{ opacity: 0, scale: 0.5, rotate: 20 }}
-                    transition={{ type: "spring", stiffness: 250, damping: 18 }}
-                    src="/Gemini_Generated_Image_rmfetzrmfetzrmfe-Photoroom.png"
+                    initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
+                    animate={{ opacity: 0.85, scale: 1.15, rotate: 8 }}
+                    exit={{ opacity: 0, scale: 0.8, rotate: 15 }}
+                    transition={{ type: "spring", stiffness: 180, damping: 20 }}
+                    src="/splash.png"
                     alt="Coffee Splash"
                     className="absolute pointer-events-none select-none z-0 w-24 h-24 max-w-none object-contain"
                   />
@@ -569,19 +569,6 @@ export default function App() {
                 <Mail size={18} className="text-avin-brown shrink-0" />
                 <a href="mailto:info@xylouris.gr" className="hover:text-white text-xs md:text-sm break-all">info@xylouris.gr</a>
               </div>
-            </div>
-            {/* Full color location map */}
-            <div className="w-full h-44 rounded-lg overflow-hidden border border-white/10 shadow-lg relative z-10 transition-transform duration-300 hover:scale-[1.02] select-none">
-              <iframe 
-                src="https://maps.google.com/maps?q=Solomos%20Korinthias%20Greece&t=&z=14&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Shop Location Map"
-              />
             </div>
           </div>
         </div>
