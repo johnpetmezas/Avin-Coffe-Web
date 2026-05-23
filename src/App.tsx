@@ -588,6 +588,19 @@ export default function App() {
                 <a href="mailto:info@xylouris.gr" className="hover:text-white text-xs md:text-sm break-all">info@xylouris.gr</a>
               </div>
             </div>
+            {/* Full color location map */}
+            <div className="w-full h-44 rounded-lg overflow-hidden border border-white/10 shadow-lg relative z-10 transition-transform duration-300 hover:scale-[1.02] mt-6 select-none">
+              <iframe 
+                src="https://maps.google.com/maps?q=Solomos%20Korinthias%20Greece&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Shop Location Map"
+              />
+            </div>
           </div>
         </div>
 
