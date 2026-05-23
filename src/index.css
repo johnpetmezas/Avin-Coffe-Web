@@ -103,6 +103,6 @@
 }
 
 .animate-marquee-track {
-  animation: marquee-track 10s linear infinite;
+  animation: marquee-track 4s linear infinite;
 }
 

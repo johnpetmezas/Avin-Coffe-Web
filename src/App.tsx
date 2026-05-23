@@ -230,11 +230,28 @@ export default function App() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 }}
-                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border-[1.58px] border-zinc-600 bg-[#2D241E] px-5 py-3 font-medium text-white shadow-md transition-all duration-300 hover:[transform:translateY(-.335rem)] hover:shadow-xl tracking-widest text-xs uppercase mt-6 md:mt-[60px]"
+                className="relative overflow-hidden bg-[#2D241E] text-white border-none cursor-pointer rounded-full w-56 h-12 md:w-64 md:h-14 shadow-lg shadow-black/10 hover:bg-black transition-all duration-300 flex items-center justify-center mt-6 md:mt-[60px] select-none"
               >
-                ORDER NOW
-                <span className="text-white/60">─</span>
-                <ArrowRight size={14} className="text-white/85" />
+                <div className="absolute inset-0 flex items-center overflow-hidden">
+                  <div className="absolute flex whitespace-nowrap animate-marquee-track">
+                    {/* First half */}
+                    <div className="flex shrink-0 items-center gap-3 pr-3">
+                      {Array(8).fill(null).map((_, idx) => (
+                        <span key={idx} className="text-xs font-bold tracking-widest uppercase flex items-center gap-2">
+                          Order Now <ArrowRight size={12} />
+                        </span>
+                      ))}
+                    </div>
+                    {/* Second half (identical clone for seamless loop) */}
+                    <div className="flex shrink-0 items-center gap-3 pr-3">
+                      {Array(8).fill(null).map((_, idx) => (
+                        <span key={idx} className="text-xs font-bold tracking-widest uppercase flex items-center gap-2">
+                          Order Now <ArrowRight size={12} />
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </motion.button>
             </motion.div>
           </div>
@@ -392,11 +409,28 @@ export default function App() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border-[1.58px] border-zinc-600 bg-[#2D241E] px-5 py-3 font-medium text-white shadow-md transition-all duration-300 hover:[transform:translateY(-.335rem)] hover:shadow-xl tracking-widest text-xs uppercase"
+            className="relative overflow-hidden bg-[#2D241E] text-white border-none cursor-pointer rounded-full w-72 h-12 md:w-80 md:h-14 shadow-lg shadow-black/10 hover:bg-black transition-all duration-300 flex items-center justify-center select-none"
           >
-            GET YOUR PREMIUM BLEND
-            <span className="text-white/60">─</span>
-            <ArrowRight size={14} className="text-white/85" />
+            <div className="absolute inset-0 flex items-center overflow-hidden">
+              <div className="absolute flex whitespace-nowrap animate-marquee-track">
+                {/* First half */}
+                <div className="flex shrink-0 items-center gap-4 pr-4">
+                  {Array(6).fill(null).map((_, idx) => (
+                    <span key={idx} className="text-xs font-bold tracking-widest uppercase flex items-center gap-2">
+                      Get Your Premium Blend <ArrowRight size={12} />
+                    </span>
+                  ))}
+                </div>
+                {/* Second half (identical clone for seamless loop) */}
+                <div className="flex shrink-0 items-center gap-4 pr-4">
+                  {Array(6).fill(null).map((_, idx) => (
+                    <span key={idx} className="text-xs font-bold tracking-widest uppercase flex items-center gap-2">
+                      Get Your Premium Blend <ArrowRight size={12} />
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </motion.button>
         </div>
 
