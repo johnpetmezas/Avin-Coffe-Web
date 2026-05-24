@@ -36,15 +36,9 @@ export default function App() {
   const [showModal, setShowModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredHeaderIndex, setHoveredHeaderIndex] = useState<number | null>(null);
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
       if (mobileMenuOpen) {
         setMobileMenuOpen(false);
       }
@@ -73,17 +67,11 @@ export default function App() {
     <div className="min-h-screen bg-avin-black text-white font-sans selection:bg-avin-brown selection:text-white overflow-x-hidden">
       {/* Hero Container with Header */}
       <section className="relative min-h-0 md:min-h-screen pb-12 md:pb-0 paper-texture text-avin-black overflow-hidden flex flex-col">
-        {/* Navigation - Light Mode for Header strictly matching image, transitioning to sticky glassmorphic on scroll */}
-        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex items-center justify-between px-8 md:px-16 ${
-          scrolled 
-            ? 'bg-[#141414]/90 backdrop-blur-md shadow-lg border-b border-white/5 h-20 text-white' 
-            : 'bg-transparent h-24 md:h-28 text-avin-black'
-        }`}>
+        {/* Navigation - Light Mode for Header strictly matching image */}
+        <header className="relative z-30 h-24 md:h-28 flex items-center justify-between px-8 md:px-16">
           <div className="flex items-center gap-4">
             <img src="/logo.png" alt="XYLOURIS Logo" className="h-12 w-auto object-contain md:h-15" />
-            <div className={`border-2 border-avin-brown text-avin-brown font-black px-3 py-0.5 md:py-1 rounded-md text-xs md:text-sm tracking-wider shadow-sm flex items-center justify-center transition-all duration-300 ${
-              scrolled ? 'translate-y-0' : 'translate-y-[10px]'
-            }`}>
+            <div className="border-2 border-avin-brown text-avin-brown font-black px-3 py-0.5 md:py-1 rounded-md text-xs md:text-sm tracking-wider shadow-sm flex items-center justify-center translate-y-[10px]">
               AVIN
             </div>
           </div>
@@ -96,18 +84,14 @@ export default function App() {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="relative text-sm font-extrabold tracking-widest focus:outline-none py-2 px-3 flex items-center justify-center select-none"
             >
-              <span className={`relative z-10 transition-colors duration-300 ${
-                hoveredHeaderIndex === 0 
-                  ? (scrolled ? 'text-avin-brown opacity-100' : 'text-black opacity-100') 
-                  : (scrolled ? 'text-white opacity-70' : 'text-avin-black opacity-70')
-              }`}>
+              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 0 ? 'text-black opacity-100' : 'text-avin-black opacity-70'}`}>
                 Home
               </span>
               <AnimatePresence>
                 {hoveredHeaderIndex === 0 && (
                   <motion.img 
                     initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
-                    animate={{ opacity: scrolled ? 0.4 : 0.85, scale: 1.15, rotate: -5 }}
+                    animate={{ opacity: 0.85, scale: 1.15, rotate: -5 }}
                     exit={{ opacity: 0, scale: 0.8, rotate: 15 }}
                     transition={{ type: "spring", stiffness: 180, damping: 20 }}
                     src="/splash.png"
@@ -125,18 +109,14 @@ export default function App() {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="relative text-sm font-extrabold tracking-widest focus:outline-none py-2 px-3 flex items-center justify-center select-none"
             >
-              <span className={`relative z-10 transition-colors duration-300 ${
-                hoveredHeaderIndex === 1 
-                  ? (scrolled ? 'text-avin-brown opacity-100' : 'text-black opacity-100') 
-                  : (scrolled ? 'text-white opacity-70' : 'text-avin-black opacity-70')
-              }`}>
+              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 1 ? 'text-black opacity-100' : 'text-avin-black opacity-70'}`}>
                 Menu
               </span>
               <AnimatePresence>
                 {hoveredHeaderIndex === 1 && (
                   <motion.img 
                     initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
-                    animate={{ opacity: scrolled ? 0.4 : 0.85, scale: 1.15, rotate: 5 }}
+                    animate={{ opacity: 0.85, scale: 1.15, rotate: 5 }}
                     exit={{ opacity: 0, scale: 0.8, rotate: 15 }}
                     transition={{ type: "spring", stiffness: 180, damping: 20 }}
                     src="/splash.png"
@@ -154,18 +134,14 @@ export default function App() {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="relative text-sm font-extrabold tracking-widest focus:outline-none py-2 px-3 flex items-center justify-center select-none"
             >
-              <span className={`relative z-10 transition-colors duration-300 ${
-                hoveredHeaderIndex === 2 
-                  ? (scrolled ? 'text-avin-brown opacity-100' : 'text-black opacity-100') 
-                  : (scrolled ? 'text-white opacity-70' : 'text-avin-black opacity-70')
-              }`}>
+              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 2 ? 'text-black opacity-100' : 'text-avin-black opacity-70'}`}>
                 Deals
               </span>
               <AnimatePresence>
                 {hoveredHeaderIndex === 2 && (
                   <motion.img 
                     initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
-                    animate={{ opacity: scrolled ? 0.4 : 0.85, scale: 1.15, rotate: -12 }}
+                    animate={{ opacity: 0.85, scale: 1.15, rotate: -12 }}
                     exit={{ opacity: 0, scale: 0.8, rotate: 15 }}
                     transition={{ type: "spring", stiffness: 180, damping: 20 }}
                     src="/splash.png"
@@ -183,18 +159,14 @@ export default function App() {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="relative text-sm font-extrabold tracking-widest focus:outline-none py-2 px-3 flex items-center justify-center select-none"
             >
-              <span className={`relative z-10 transition-colors duration-300 ${
-                hoveredHeaderIndex === 3 
-                  ? (scrolled ? 'text-avin-brown opacity-100' : 'text-black opacity-100') 
-                  : (scrolled ? 'text-white opacity-70' : 'text-avin-black opacity-70')
-              }`}>
+              <span className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 3 ? 'text-black opacity-100' : 'text-avin-black opacity-70'}`}>
                 Favourite
               </span>
               <AnimatePresence>
                 {hoveredHeaderIndex === 3 && (
                   <motion.img 
                     initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
-                    animate={{ opacity: scrolled ? 0.4 : 0.85, scale: 1.15, rotate: 8 }}
+                    animate={{ opacity: 0.85, scale: 1.15, rotate: 8 }}
                     exit={{ opacity: 0, scale: 0.8, rotate: 15 }}
                     transition={{ type: "spring", stiffness: 180, damping: 20 }}
                     src="/splash.png"
@@ -214,17 +186,13 @@ export default function App() {
             >
               <ShoppingCart 
                 size={18} 
-                className={`relative z-10 transition-colors duration-300 ${
-                  hoveredHeaderIndex === 4 
-                    ? (scrolled ? 'text-avin-brown opacity-100' : 'text-black opacity-100') 
-                    : (scrolled ? 'text-white opacity-70' : 'text-avin-black opacity-70')
-                }`} 
+                className={`relative z-10 transition-colors duration-300 ${hoveredHeaderIndex === 4 ? 'text-black opacity-100' : 'text-avin-black opacity-70'}`} 
               />
               <AnimatePresence>
                 {hoveredHeaderIndex === 4 && (
                   <motion.img 
                     initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
-                    animate={{ opacity: scrolled ? 0.4 : 0.85, scale: 1.15, rotate: -3 }}
+                    animate={{ opacity: 0.85, scale: 1.15, rotate: -3 }}
                     exit={{ opacity: 0, scale: 0.8, rotate: 15 }}
                     transition={{ type: "spring", stiffness: 180, damping: 20 }}
                     src="/splash.png"
@@ -240,16 +208,16 @@ export default function App() {
           <div className="flex md:hidden items-center gap-6 z-50">
             <motion.div
               whileTap={{ scale: 0.95 }}
-              className={`cursor-pointer transition-colors duration-300 ${scrolled ? 'text-white opacity-90' : 'text-avin-black opacity-75'}`}
+              className="cursor-pointer text-avin-black"
             >
-              <ShoppingCart size={18} />
+              <ShoppingCart size={18} className="opacity-75" />
             </motion.div>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`focus:outline-none p-1 transition-colors duration-300 ${scrolled ? 'text-white' : 'text-avin-black'}`}
+              className="text-avin-black focus:outline-none p-1"
               aria-label="Toggle Menu"
             >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileMenuOpen ? <X size={22} className="text-avin-black" /> : <Menu size={22} className="text-avin-black" />}
             </button>
           </div>
         </header>
@@ -307,7 +275,7 @@ export default function App() {
         </AnimatePresence>
 
         {/* Hero Content */}
-        <div className="flex-grow flex flex-col md:flex-row items-center px-8 md:px-24 pt-28 md:pt-36 pb-12 md:pb-16 relative">
+        <div className="flex-grow flex flex-col md:flex-row items-center px-8 md:px-24 py-6 md:py-12 relative">
           {/* Abstract background circles */}
           <div className="absolute top-0 left-0 -translate-x-1/4 -translate-y-1/4">
              {[...Array(5)].map((_, i) => (
@@ -383,21 +351,9 @@ export default function App() {
           <div className="w-full md:w-1/2 relative h-[260px] md:h-[500px] mt-6 md:mt-0 flex items-center justify-center z-20">
             {/* The Drink with Composite Background */}
             <motion.img 
-              initial={{ scale: 0.9, opacity: 0, y: 15 }}
-              animate={{ 
-                scale: 1, 
-                opacity: 1,
-                y: [0, -12, 0]
-              }}
-              transition={{ 
-                opacity: { duration: 1.2, delay: 0.8, ease: "easeOut" },
-                scale: { duration: 1.2, delay: 0.8, ease: "easeOut" },
-                y: {
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }
-              }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
               src="/hscf.png"
               alt="XYLOURIS Premium Coffee Experience"
               className="relative z-30 w-full max-w-[600px] max-h-[240px] md:max-h-none object-contain h-auto drop-shadow-[0_40px_80px_rgba(0,0,0,0.3)]"
@@ -499,19 +455,16 @@ export default function App() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.25, 1, 0.5, 1] }}
                 whileHover={{ y: -8 }}
-                className="p-10 bg-avin-black/60 backdrop-blur-lg flex flex-col items-center text-center relative overflow-hidden group cursor-pointer border border-white/10 rounded-xl shadow-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(194,163,130,0.15)] hover:border-avin-brown/40"
+                className="p-10 bg-avin-dark/95 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer border border-white/10 rounded-sm shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-avin-brown/30"
               >
-                {/* Modern radial hover glow effect */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(194,163,130,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
                 {/* Stunning Top Border Accent Line that reveals on hover */}
                 <div className="absolute top-0 left-0 w-full h-[3px] bg-avin-brown scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
-                <div className="text-avin-brown mb-6 group-hover:scale-110 transition-transform duration-500 relative z-10">
+                <div className="text-avin-brown mb-6 group-hover:scale-110 transition-transform duration-500">
                   {service.icon}
                 </div>
-                <h3 className="text-lg font-bold tracking-widest uppercase mb-4 text-white relative z-10">{service.title}</h3>
-                <p className="text-white/70 text-sm font-light leading-relaxed group-hover:text-white transition-colors duration-300 relative z-10">
+                <h3 className="text-lg font-bold tracking-widest uppercase mb-4 text-white">{service.title}</h3>
+                <p className="text-white/70 text-sm font-light leading-relaxed group-hover:text-white transition-colors duration-300">
                   {service.desc}
                 </p>
               </motion.div>
@@ -575,22 +528,10 @@ export default function App() {
         <div className="md:w-1/2 h-[280px] md:h-[400px] relative flex items-center justify-center">
           {/* Floating coffee bag and beans mockup feel */}
           <motion.img 
-            initial={{ opacity: 0, scale: 0.95, y: 10 }}
-            whileInView={{ 
-              opacity: 1, 
-              scale: 1,
-              y: [0, 8, 0]
-            }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ 
-              opacity: { duration: 1 },
-              scale: { duration: 1 },
-              y: {
-                duration: 5.5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }
-            }}
+            transition={{ duration: 1 }}
             src="/Gemini_Generated_Image_rmfetzrmfetzrmfe-Photoroom.png"
             className="w-full max-w-[500px] max-h-[260px] md:max-h-none object-contain z-10 drop-shadow-2xl"
             referrerPolicy="no-referrer"
