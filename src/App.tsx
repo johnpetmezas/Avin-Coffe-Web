@@ -47,11 +47,22 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [mobileMenuOpen]);
 
+  const getAppUrl = () => {
+    const envUrl = (import.meta as any).env?.VITE_APP_URL;
+    if (envUrl && envUrl !== 'MY_APP_URL' && envUrl !== '') {
+      return envUrl;
+    }
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return `http://${window.location.hostname}:3001`;
+    }
+    return 'https://johnpetmezas.github.io/avin-coffe-app/';
+  };
+
   const handleOrderClick = () => {
     if (canInstall) {
       setShowModal(true);
     } else {
-      window.location.href = '/order.html';
+      window.location.href = getAppUrl();
     }
   };
 
@@ -60,7 +71,7 @@ export default function App() {
     if (install) {
       await showInstallPrompt();
     }
-    window.location.href = '/order.html';
+    window.location.href = getAppUrl();
   };
 
   return (
@@ -103,6 +114,7 @@ export default function App() {
             </motion.button>
 
             <motion.button 
+              onClick={handleOrderClick}
               onMouseEnter={() => setHoveredHeaderIndex(1)}
               onMouseLeave={() => setHoveredHeaderIndex(null)}
               whileHover={{ scale: 1.05 }}
@@ -128,6 +140,7 @@ export default function App() {
             </motion.button>
 
             <motion.button 
+              onClick={handleOrderClick}
               onMouseEnter={() => setHoveredHeaderIndex(2)}
               onMouseLeave={() => setHoveredHeaderIndex(null)}
               whileHover={{ scale: 1.05 }}
@@ -153,6 +166,7 @@ export default function App() {
             </motion.button>
 
             <motion.button 
+              onClick={handleOrderClick}
               onMouseEnter={() => setHoveredHeaderIndex(3)}
               onMouseLeave={() => setHoveredHeaderIndex(null)}
               whileHover={{ scale: 1.05 }}
@@ -178,6 +192,7 @@ export default function App() {
             </motion.button>
 
             <motion.div
+              onClick={handleOrderClick}
               onMouseEnter={() => setHoveredHeaderIndex(4)}
               onMouseLeave={() => setHoveredHeaderIndex(null)}
               whileHover={{ scale: 1.1 }}
@@ -207,6 +222,7 @@ export default function App() {
           {/* Mobile Navigation Controls */}
           <div className="flex md:hidden items-center gap-6 z-50">
             <motion.div
+              onClick={handleOrderClick}
               whileTap={{ scale: 0.95 }}
               className="cursor-pointer text-avin-black"
             >
@@ -251,21 +267,30 @@ export default function App() {
               </motion.button>
               <motion.button 
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleOrderClick();
+                }}
                 className="text-avin-black text-left text-sm font-extrabold tracking-widest py-3 border-b border-black/5 uppercase"
               >
                 Menu
               </motion.button>
               <motion.button 
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleOrderClick();
+                }}
                 className="text-avin-black text-left text-sm font-extrabold tracking-widest py-3 border-b border-black/5 uppercase"
               >
                 Deals
               </motion.button>
               <motion.button 
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleOrderClick();
+                }}
                 className="text-avin-black text-left text-sm font-extrabold tracking-widest py-3 uppercase"
               >
                 Favourite
@@ -555,9 +580,9 @@ export default function App() {
             <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-white">Page</h4>
             <div className="flex flex-col gap-4 text-sm font-medium opacity-60">
               <a href="#" className="hover:text-avin-brown transition-colors">Home</a>
-              <a href="#" className="hover:text-avin-brown transition-colors">Menu</a>
-              <a href="#" className="hover:text-avin-brown transition-colors">Deals</a>
-              <a href="#" className="hover:text-avin-brown transition-colors">Favourite</a>
+              <button onClick={handleOrderClick} className="text-left bg-transparent border-none p-0 cursor-pointer hover:text-avin-brown transition-colors">Menu</button>
+              <button onClick={handleOrderClick} className="text-left bg-transparent border-none p-0 cursor-pointer hover:text-avin-brown transition-colors">Deals</button>
+              <button onClick={handleOrderClick} className="text-left bg-transparent border-none p-0 cursor-pointer hover:text-avin-brown transition-colors">Favourite</button>
             </div>
           </div>
 
